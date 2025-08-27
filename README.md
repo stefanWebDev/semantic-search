@@ -20,3 +20,4 @@ CMS that includes semantic AI LLM search.
 - npm run build and start or npm run dev
 - docker compose up for WordPress
 - set up WordPress with wizard (port 8080)
+- create site and embed next.js app in WordPress, if localhost: '<iframe src="http://localhost:3000" width="100%" height="600" style="border:none;"></iframe>'
