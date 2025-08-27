@@ -13,3 +13,10 @@ CMS that includes semantic AI search.
 ## Overview
 
 ![Architecture Diagram](./docs/overview_search.svg)
+
+## Setup
+
+- npm install
+- npm run build and start or npm run dev
+- docker compose up for WordPress
+- set up WordPress with wizard (port 8080)
