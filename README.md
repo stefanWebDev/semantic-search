@@ -1,6 +1,6 @@
 ## Project
 
-CMS that includes semantic AI search.
+CMS that includes semantic AI LLM search.
 
 ## Features
 
