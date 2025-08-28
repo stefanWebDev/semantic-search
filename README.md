@@ -2,6 +2,8 @@
 
 CMS that includes semantic search via LLM.
 
+Still work in progress
+
 ## Features
 
 - dockered WordPress
