@@ -31,6 +31,11 @@ services:
       - "8000:8000"
     restart: unless-stopped
 
+  nextjs:
+    build: .
+    ports:
+      - "3000:3000"
+
 volumes:
   wordpress_data:
   db_data:

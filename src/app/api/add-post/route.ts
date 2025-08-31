@@ -4,8 +4,6 @@ import { createEmbedding } from "../../utils/embedding";
 import { getCollection } from "../../utils/vector-db";
 
 export async function POST(req: NextRequest) {
-  console.log("asdf");
-
   const { id, title, content } = await req.json();
 
   const embedding = await createEmbedding(title + " " + content);
