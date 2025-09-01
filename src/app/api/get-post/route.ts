@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     const results = await collection.query({
       queryEmbeddings: [embedding],
-      nResults: 10,
+      nResults: 1,
     });
 
     return NextResponse.json({ results });

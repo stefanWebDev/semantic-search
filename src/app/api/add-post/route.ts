@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   const collection = await getCollection();
 
   await collection.add({
-    ids: [post_id],
+    ids: [post_id.toString()],
     embeddings: [embedding],
     metadatas: [{ title: post.post_title, content: post.post_content }],
   });
