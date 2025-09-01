@@ -4,15 +4,17 @@ import { createEmbedding } from "../../utils/embedding";
 import { getCollection } from "../../utils/vector-db";
 
 export async function POST(req: NextRequest) {
-  const { id, title, content } = await req.json();
+  const { post_id, post } = await req.json();
 
-  const embedding = await createEmbedding(title + " " + content);
+  const embedding = await createEmbedding(
+    post.post_title + " " + post.post_content
+  );
   const collection = await getCollection();
 
   await collection.add({
-    ids: [id],
+    ids: [post_id],
     embeddings: [embedding],
-    metadatas: [{ title, content }],
+    metadatas: [{ title: post.post_title, content: post.post_content }],
   });
 
   return NextResponse.json({ success: true });

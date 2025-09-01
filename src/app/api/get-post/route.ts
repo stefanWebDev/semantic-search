@@ -3,16 +3,30 @@ import { createEmbedding } from "../../utils/embedding";
 import { getCollection } from "../../utils/vector-db";
 
 export async function POST(req: NextRequest) {
-  //e.g. Where is the post about cakes?
-  const { query } = await req.json();
+  try {
+    const body = await req.json();
+    const query = body?.query;
 
-  const embedding = await createEmbedding(query);
-  const collection = await getCollection();
+    if (!query) {
+      return NextResponse.json({ error: "Missing query" }, { status: 400 });
+    }
 
-  const results = await collection.query({
-    queryEmbeddings: [embedding],
-    nResults: 3,
-  });
+    const embedding = await createEmbedding(query);
+    const collection = await getCollection();
 
-  return NextResponse.json({ results });
+    const results = await collection.query({
+      queryEmbeddings: [embedding],
+      nResults: 10,
+    });
+
+    return NextResponse.json({ results });
+  } catch (error: unknown) {
+    return NextResponse.json(
+      {
+        error:
+          (error as { message?: string }).message || "Internal Server Error",
+      },
+      { status: 500 }
+    );
+  }
 }
