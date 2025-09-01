@@ -25,6 +25,15 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  chromadb:
+    image: chromadb/chroma
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    volumes:
+      - chromadb_data:/chroma/chroma-data
+
 volumes:
   wordpress_data:
   db_data:
+  chromadb_data:
